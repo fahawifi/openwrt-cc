@@ -1,6 +1,7 @@
 已修改：/openwrt-cc/include/prereq-build.mk
 
 这是编译wifi pineapple的基础固件（GL-inet官方固件）https://github.com/domino-team/openwrt-cc
+配套笔记http://note.youdao.com/noteshare?id=bb9729ff8f683005f9e4a1a35f22f584
 
 This is the buildsystem for OpenWrt CC1505 with updated GLI patches,
 including GL-AR150, GL-AR300, GL-Domino, GL-MT300N, GL-MT300A, GL-MT750
