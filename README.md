@@ -1,16 +1,9 @@
 已修改：/openwrt-cc/include/prereq-build.mk
 
-
+这是编译wifi pineapple的基础固件（GL-inet官方固件）https://github.com/domino-team/openwrt-cc
 
 This is the buildsystem for OpenWrt CC1505 with updated GLI patches,
 including GL-AR150, GL-AR300, GL-Domino, GL-MT300N, GL-MT300A, GL-MT750
-
-Patches has been applied. Just use "make menuconfig" to configure your appreciated
-configuration for the toolchain and firmware.
-
-To build your own firmware you need to have access to a Linux, BSD or MacOSX system
-(case-sensitive filesystem required). Cygwin will not be supported because of
-the lack of case sensitiveness in the file system.
 
 
 #Use in Ubuntu
@@ -26,6 +19,10 @@ $ sudo apt-get install subversion build-essential git-core libncurses5-dev zlib1
 $ chmod +x openwrt-cc
 
 $ cd openwrt-cc
+
+#把由fmk从wifipineapple固件里提取的/fmk/fmk/rootfs拷贝到package下
+
+$ cp -r /fmk/fmk/rootfs openwrt-cc/package/
 
 $ ./scripts/feeds update -a
 
