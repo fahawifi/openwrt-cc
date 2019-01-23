@@ -3,6 +3,7 @@
 top=$(pwd)
 
 extract_firmware() {
+tar -zxvf fmk_099.tar.gz
     cd fmk
    ./extract-firmware.sh ../upgrade-2.4.2.bin
     cd "$top"
