@@ -3,12 +3,11 @@
 top=$(pwd)
 
 extract_firmware() {
-    cd "$top/firmware-mod-kit"
-    ./extract-firmware.sh "$top"/upgrade-"$upstream_version".bin
+    cd fmk
+   ./extract-firmware.sh ../upgrade-2.4.2.bin
     cd "$top"
-    echo "$upstream_version" > configs/.upstream_version
     mkdir openwrt-cc/files
-    cp -r firmware-mod-kit/fmk/rootfs/* openwrt-cc/files/
+    cp -r fmk/fmk/rootfs/* openwrt-cc/files/
     rm -rf openwrt-cc/files/lib/modules/*
     rm -rf openwrt-cc/files/sbin/modprobe
 }
