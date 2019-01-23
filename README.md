@@ -57,6 +57,9 @@ $ make menuconfig
   
 $ make
 
+自动化脚本
+chmod +x build_pineapple.sh
+./build_pineapple.sh
 
 
 
