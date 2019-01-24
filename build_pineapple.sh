@@ -26,27 +26,24 @@ apt-get -y install git
 apt-get -y install wget
 
 git clone https://github.com/fahawifi/openwrt-cc.git
-chmod +x openwrt-cc
-mkdir openwrt-cc/files
 cd openwrt-cc
 tar -zxvf fmk_099.tar.gz
 cd fmk
 echo "BINWALK=binwalk" >> shared-ng.inc
 ./extract-firmware.sh ../upgrade-2.4.2.bin
 
-    cd
-    cd home/unbuntu
-    mkdir openwrt-cc/files
-    cp -r fmk/fmk/rootfs/* openwrt-cc/files/
-    rm -rf openwrt-cc/files/lib/modules/*
-    rm -rf openwrt-cc/files/sbin/modprobe
+cd
+cd home/unbuntu
+chmod +x openwrt-cc
+mkdir openwrt-cc/files
+cp -r fmk/fmk/rootfs/* openwrt-cc/files/
+rm -rf openwrt-cc/files/lib/modules/*
+rm -rf openwrt-cc/files/sbin/modprobe
 
-
-install_scripts() {
-    cd "$top/openwrt-cc"
-    ./scripts/feeds update -a
-    ./scripts/feeds install -a
-}
+./scripts/feeds update -a
+./scripts/feeds install -a
+make menuconfig
+make
 
 build_firmware() {
     cd "$top/openwrt-cc"
