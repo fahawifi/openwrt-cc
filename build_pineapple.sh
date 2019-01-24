@@ -1,46 +1,45 @@
 #!/bin/bash
+apt-get update
+apt -y install binwalk
+apt-get  install git-core
+apt-get  -y install build-essential
+apt-get  -y install zlib1g-dev
+apt-get  -y install liblzma-dev
+apt-get  -y install python-magic
+apt-get -y install subversion
+apt-get -y install build-essential
+apt-get -y install git-core
+apt-get -y install libncurses5-dev
+apt-get -y install zlib1g-dev
+apt-get -y install gawk
+apt-get -y install flex
+apt-get -y install quilt
+apt-get -y install libssl-dev
+apt-get -y install xsltproc
+apt-get -y install libxml-parser-perl
+apt-get -y install mercurial
+apt-get -y install bzr
+apt-get -y install ecj
+apt-get -y install cvs
+apt-get -y install unzip
+apt-get -y install git
+apt-get -y install wget
 
-top=$(pwd)
-
-extract_firmware() {
+git clone https://github.com/fahawifi/openwrt-cc.git
 tar -zxvf fmk_099.tar.gz
-    cd fmk
-   ./extract-firmware.sh ../upgrade-2.4.2.bin
-    cd "$top"
+chmod +x openwrt-cc
+mkdir openwrt-cc/files
+cd fmk
+echo "BINWALK=binwalk" >> shared-ng.inc
+./extract-firmware.sh ../upgrade-2.4.2.bin
+
+    cd
+    cd home/unbuntu
     mkdir openwrt-cc/files
     cp -r fmk/fmk/rootfs/* openwrt-cc/files/
     rm -rf openwrt-cc/files/lib/modules/*
     rm -rf openwrt-cc/files/sbin/modprobe
-}
 
-apt_get() {
-    # Clean this up
-    sudo apt-get update
-    sudo apt-get install -y \
-    git build-essential zlib1g-dev liblzma-dev python-magic subversion \
-    build-essential git-core libncurses5-dev zlib1g-dev gawk flex quilt \
-    libssl-dev xsltproc libxml-parser-perl mercurial bzr ecj cvs unzip
-}
-
-install_binwalk() {
-    cd "$top/binwalk"
-    ./deps.sh
-    sudo python setup.py install
-    cd "$top"
-}
-
-first_run() {
-    cd "$top"
-    apt_get
-    #git submodule update --recursive --remote
-    wget https://www.wifipineapple.com/downloads/nano/latest -O upgrade-"$upstream_version".bin
-    install_binwalk
-    echo "BINWALK=binwalk" >> firmware-mod-kit/shared-ng.inc
-    touch configs/.upstream_version
-    cp configs/gl-ar150-defconfig openwrt-cc/.config
-    mkdir firmware_images
-    extract_firmware
-}
 
 install_scripts() {
     cd "$top/openwrt-cc"
