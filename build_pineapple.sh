@@ -26,9 +26,10 @@ apt-get -y install git
 apt-get -y install wget
 
 git clone https://github.com/fahawifi/openwrt-cc.git
-tar -zxvf fmk_099.tar.gz
 chmod +x openwrt-cc
 mkdir openwrt-cc/files
+cd openwrt-cc
+tar -zxvf fmk_099.tar.gz
 cd fmk
 echo "BINWALK=binwalk" >> shared-ng.inc
 ./extract-firmware.sh ../upgrade-2.4.2.bin
