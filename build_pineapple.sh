@@ -36,10 +36,11 @@ cd
 cd home/unbuntu
 chmod +x openwrt-cc
 mkdir openwrt-cc/files
-cp -r fmk/fmk/rootfs/* openwrt-cc/files/
+cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
 rm -rf openwrt-cc/files/lib/modules/*
 rm -rf openwrt-cc/files/sbin/modprobe
 
+cd openwrt-cc
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 make menuconfig
