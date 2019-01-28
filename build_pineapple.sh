@@ -1,4 +1,7 @@
 #!/bin/bash
+#安装依赖和解固（fmk/fmk/rootfs/*）必须以root身份
+#但是git等方式下载OpenWrt固件源码（直接可以刷到该路由，但没有大菠萝功能）和后期./scripts/feeds update -a开始安装都必须切换到普通用户，否则出错
+sudo su
 apt-get update
 apt -y install binwalk
 apt-get  install git-core
@@ -22,18 +25,33 @@ apt-get -y install bzr
 apt-get -y install ecj
 apt-get -y install cvs
 apt-get -y install unzip
+apt-get -y install bzip2
 apt-get -y install git
+apt-get -y install make
 apt-get -y install wget
+apt-get -y install gcc
+apt-get -y install g++ 
+apt-get -y install binutils 
+apt-get -y install patch
+apt-get -y install bison 
+apt-get -y install autoconf 
+apt-get -y install gettext 
+apt-get -y install texinfo 
+apt-get -y install sharutils
+apt-get -y install ncurses-term
+apt-get -y install asciidoc
+apt-get -y install libz-dev
 
+#下载该路由型号官网的openwrt源码，尽量原生和简洁
+#退出root，以普通用户身份执行下面的下载源码命令
 git clone https://github.com/fahawifi/openwrt-cc.git
 cd openwrt-cc
 tar -zxvf fmk_099.tar.gz
 cd fmk
-echo "BINWALK=binwalk" >> shared-ng.inc
-./extract-firmware.sh ../upgrade-2.4.2.bin
+sudo echo "BINWALK=binwalk" >> shared-ng.inc
+sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
 
-cd
-cd home/unbuntu
+cd ..
 chmod +x openwrt-cc
 mkdir openwrt-cc/files
 cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
