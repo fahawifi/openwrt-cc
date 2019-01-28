@@ -43,7 +43,6 @@ apt-get -y install ncurses-term
 apt-get -y install asciidoc
 apt-get -y install libz-dev
 
-
 #退出root，以普通用户身份（#变$）执行下面的下载源码命令
 useradd -m linshiname
 passwd linshiname
@@ -52,6 +51,8 @@ chsh -s /bin/bash linshiname
 #切换成普通用户username
 su linshiname
 
+=============================================
+#!/bin/bash
 #以上中断，需删除以上代码后保存，再执行该脚本
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
 cd root
