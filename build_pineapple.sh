@@ -61,6 +61,8 @@ sudo ./2
 #sudo chmod +x 2
 #sudo ./2
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
+#切换成普通用户username
+su linshiname
 cd root
 #浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
 #sudo git clone https://github.com/fahawifi/openwrt-cc.git
@@ -72,8 +74,6 @@ sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
 
 
 cd ..
-#切换成普通用户username
-su linshiname
 sudo chmod +x openwrt-cc
 sudo mkdir openwrt-cc/files
 sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
