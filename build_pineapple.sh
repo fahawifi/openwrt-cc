@@ -54,10 +54,12 @@ su linshiname
 
 #以上中断，需删除以上代码后保存，再执行该脚本
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
-git clone https://github.com/fahawifi/openwrt-cc.git
+cd root
+#浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
+#sudo git clone https://github.com/fahawifi/openwrt-cc.git
 cd openwrt-cc
 tar -zxvf fmk_099.tar.gz
-cd fmk
+sudo cd fmk
 sudo echo "BINWALK=binwalk" >> shared-ng.inc
 sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
 
@@ -65,17 +67,17 @@ sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
 cd ..
 #切换成普通用户username
 su linshiname
-chmod +x openwrt-cc
-mkdir openwrt-cc/files
-cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
-rm -rf openwrt-cc/files/lib/modules/*
-rm -rf openwrt-cc/files/sbin/modprobe
+sudo chmod +x openwrt-cc
+sudo mkdir openwrt-cc/files
+sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
+sudo rm -rf openwrt-cc/files/lib/modules/*
+sudo rm -rf openwrt-cc/files/sbin/modprobe
 
 cd openwrt-cc
-./scripts/feeds update -a
-./scripts/feeds install -a
-make menuconfig
-make
+sudo ./scripts/feeds update -a
+sudo ./scripts/feeds install -a
+sudo make menuconfig
+sudo make
 
 build_firmware() {
     cd "$top/openwrt-cc"
