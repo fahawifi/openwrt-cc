@@ -1,7 +1,8 @@
 #!/bin/bash
+#在livecd里操作
 #安装依赖和解固（fmk/fmk/rootfs/*）必须以root身份
 #但是git等方式下载OpenWrt固件源码（直接可以刷到该路由，但没有大菠萝功能）和后期./scripts/feeds update -a开始安装都必须切换到普通用户，否则出错
-sudo su
+
 apt-get update
 apt -y install binwalk
 apt-get  install git-core
@@ -42,8 +43,17 @@ apt-get -y install ncurses-term
 apt-get -y install asciidoc
 apt-get -y install libz-dev
 
+
+#退出root，以普通用户身份（#变$）执行下面的下载源码命令
+useradd -m linshiname
+passwd linshiname
+usermod -a -G sudo linshiname
+chsh -s /bin/bash linshiname
+#切换成普通用户username
+su linshiname
+
+#以上中断，需删除以上代码后保存，再执行该脚本
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
-#退出root，以普通用户身份执行下面的下载源码命令
 git clone https://github.com/fahawifi/openwrt-cc.git
 cd openwrt-cc
 tar -zxvf fmk_099.tar.gz
@@ -51,7 +61,10 @@ cd fmk
 sudo echo "BINWALK=binwalk" >> shared-ng.inc
 sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
 
+
 cd ..
+#切换成普通用户username
+su linshiname
 chmod +x openwrt-cc
 mkdir openwrt-cc/files
 cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
