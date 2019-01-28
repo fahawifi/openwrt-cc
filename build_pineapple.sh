@@ -66,7 +66,7 @@ cd root
 #sudo git clone https://github.com/fahawifi/openwrt-cc.git
 cd openwrt-cc
 tar -zxvf fmk_099.tar.gz
-sudo cd fmk
+cd fmk
 sudo echo "BINWALK=binwalk" >> shared-ng.inc
 sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
 
