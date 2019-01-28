@@ -66,6 +66,7 @@ su linshiname
 cd root
 #浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
 #sudo git clone https://github.com/fahawifi/openwrt-cc.git
+sudo chmod +x openwrt-cc
 cd openwrt-cc
 tar -zxvf fmk_099.tar.gz
 cd fmk
@@ -74,7 +75,6 @@ sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
 
 
 cd ..
-sudo chmod +x openwrt-cc
 sudo mkdir openwrt-cc/files
 sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
 sudo rm -rf openwrt-cc/files/lib/modules/*
