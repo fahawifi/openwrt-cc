@@ -1,5 +1,5 @@
 #!/bin/bash
-#在livecd里操作
+#在livecd里操作，kali系统，不同系统路径会不同，主要是切换用户后路径变更
 #安装依赖和解固（fmk/fmk/rootfs/*）必须以root身份
 #但是git等方式下载OpenWrt固件源码（直接可以刷到该路由，但没有大菠萝功能）和后期./scripts/feeds update -a开始安装都必须切换到普通用户，否则出错
 
@@ -43,12 +43,24 @@ apt-get -y install ncurses-term
 apt-get -y install asciidoc
 apt-get -y install libz-dev
 
+cd root
+#浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
+#git clone https://github.com/fahawifi/openwrt-cc.git
+cd openwrt-cc
+#切换成root才有权限解固
+tar -zxvf fmk_099.tar.gz
+cd fmk
+echo "BINWALK=binwalk" >> shared-ng.inc
+./extract-firmware.sh ../upgrade-2.4.2.bin
+
+
 #退出root，以普通用户身份（#变$）执行下面的下载源码命令
 useradd -m linshiname
 passwd linshiname
 usermod -a -G sudo linshiname
 chsh -s /bin/bash linshiname
-#切换成普通用户username
+
+#手动切换成普通用户linshiname，如果写入脚本运行立即终止
 su linshiname
 sudo nano 2
 sudo chmod +x 2
@@ -61,21 +73,10 @@ sudo ./2
 #sudo chmod +x 2
 #sudo ./2
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
-#切换成普通用户username
-su linshiname
-cd root
-#浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
-#sudo git clone https://github.com/fahawifi/openwrt-cc.git
-sudo chmod +x openwrt-cc
-cd openwrt-cc
-tar -zxvf fmk_099.tar.gz
-cd fmk
-sudo echo "BINWALK=binwalk" >> shared-ng.inc
-sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
-
 
 cd
 cd root
+chmod +x openwrt-cc
 sudo mkdir openwrt-cc/files
 sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
 sudo rm -rf openwrt-cc/files/lib/modules/*
