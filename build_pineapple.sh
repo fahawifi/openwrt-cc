@@ -50,16 +50,16 @@ usermod -a -G sudo linshiname
 chsh -s /bin/bash linshiname
 #切换成普通用户username
 su linshiname
-sudo nano 1
-sudo chmod +x 1
-sudo ./1
+sudo nano 2
+sudo chmod +x 2
+sudo ./2
 
-#以上中断，复制以下代码后保存为1，再执行该脚本
+#以上中断，复制以下代码后保存为2，再执行该脚本
 =============================================
 #!/bin/bash
 
-#sudo chmod +x 1
-#sudo ./1
+#sudo chmod +x 2
+#sudo ./2
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
 cd root
 #浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
