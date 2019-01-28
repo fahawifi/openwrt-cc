@@ -74,7 +74,8 @@ sudo echo "BINWALK=binwalk" >> shared-ng.inc
 sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
 
 
-cd ..
+cd
+cd root
 sudo mkdir openwrt-cc/files
 sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
 sudo rm -rf openwrt-cc/files/lib/modules/*
