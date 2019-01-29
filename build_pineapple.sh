@@ -46,6 +46,7 @@ apt-get -y install libz-dev
 cd root
 #浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
 #git clone https://github.com/fahawifi/openwrt-cc.git
+mkdir openwrt-cc/files
 cd openwrt-cc
 #切换成root才有权限解固
 tar -zxvf fmk_099.tar.gz
@@ -77,7 +78,6 @@ sudo ./2
 cd
 cd root
 chmod +x openwrt-cc
-sudo mkdir openwrt-cc/files
 sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
 sudo rm -rf openwrt-cc/files/lib/modules/*
 sudo rm -rf openwrt-cc/files/sbin/modprobe
