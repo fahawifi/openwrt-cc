@@ -52,7 +52,7 @@ tar -zxvf fmk_099.tar.gz
 cd fmk
 echo "BINWALK=binwalk" >> shared-ng.inc
 ./extract-firmware.sh ../upgrade-2.4.2.bin
-
+#把.bin改为.zip后缀，解压得到的文件和/fmk/fmk/rootfs里面的内容是一样的，放到openwrt-cc/files
 
 #退出root，以普通用户身份（#变$）执行下面的下载源码命令
 useradd -m linshiname
