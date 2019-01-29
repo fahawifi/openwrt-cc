@@ -77,12 +77,13 @@ sudo ./2
 
 cd
 cd root
-chmod +x openwrt-cc
+sudo chmod +x openwrt-cc
 sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
 sudo rm -rf openwrt-cc/files/lib/modules/*
 sudo rm -rf openwrt-cc/files/sbin/modprobe
 
 cd openwrt-cc
+sudo chmod +x ./scripts/feeds
 sudo ./scripts/feeds update -a
 sudo ./scripts/feeds install -a
 sudo make menuconfig
