@@ -59,7 +59,7 @@ cd fmk
 echo "BINWALK=binwalk" >> shared-ng.inc
 ./extract-firmware.sh ../upgrade-2.4.2.bin
 #把.bin改为.zip后缀，解压得到的文件和/fmk/fmk/rootfs里面的内容是一样的，放到openwrt-cc/files
-#unzip -o -d /home/ubuntu/openwrt-cc/files upgrade-2.4.2.zip
+#unzip -o -d /openwrt-cc/files upgrade-2.4.2.zip
 
 #退出root，以普通用户身份（#变$）执行下面的下载源码命令
 #命令连接autossh(-p 22删除)
