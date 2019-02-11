@@ -28,7 +28,6 @@ apt-get -y install cvs
 apt-get -y install unzip
 apt-get -y install bzip2
 apt-get -y install git
-apt-get -y install make
 apt-get -y install wget
 apt-get -y install gcc
 apt-get -y install g++ 
@@ -42,6 +41,13 @@ apt-get -y install sharutils
 apt-get -y install ncurses-term
 apt-get -y install asciidoc
 apt-get -y install libz-dev
+apt-get -y install make
+apt-get -y install bison
+apt-get -y install gcc-multilib
+apt-get -y install flex
+apt-get -y install gperf
+apt-get -y install libc6-dev-i386
+
 
 cd root
 #浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
