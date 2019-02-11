@@ -60,8 +60,14 @@ echo "BINWALK=binwalk" >> shared-ng.inc
 ./extract-firmware.sh ../upgrade-2.4.2.bin
 #把.bin改为.zip后缀，解压得到的文件和/fmk/fmk/rootfs里面的内容是一样的，放到openwrt-cc/files
 #unzip -o -d /openwrt-cc/files upgrade-2.4.2.zip
+cd
+cd /home/ubuntu
+sudo chmod +x openwrt-cc
+sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
+sudo rm -rf openwrt-cc/files/lib/modules/*
+sudo rm -rf openwrt-cc/files/sbin/modprobe
 
-#退出root，以普通用户身份（#变$）执行下面的下载源码命令
+#退出root身份，命令autossh(-p 22删除)登录后，在$状态下完成以下命令
 #命令连接autossh(-p 22删除)
 sudo nano 2
 sudo chmod +x 2
@@ -76,13 +82,6 @@ sudo ./2
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
 
 
-cd /home/ubuntu
-sudo chmod +x openwrt-cc
-sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
-sudo rm -rf openwrt-cc/files/lib/modules/*
-sudo rm -rf openwrt-cc/files/sbin/modprobe
-
-#退出root身份，命令autossh(-p 22删除)登录后，在$状态下完成以下命令
 cd openwrt-cc
 sudo chmod +x ./scripts/feeds
 #feeds update在本地电脑非常慢，在vps快
