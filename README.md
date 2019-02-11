@@ -1,4 +1,5 @@
 这是编译wifi pineapple的基础固件（GL-inet官方固件）https://github.com/domino-team/openwrt-cc
+
 wifipineapple https://www.wifipineapple.com/downloads
 
 配套笔记http://note.youdao.com/noteshare?id=bb9729ff8f683005f9e4a1a35f22f584
