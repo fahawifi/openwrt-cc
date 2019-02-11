@@ -49,7 +49,6 @@ apt-get -y install gperf
 apt-get -y install libc6-dev-i386
 
 
-cd root
 #浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
 #git clone https://github.com/fahawifi/openwrt-cc.git
 mkdir openwrt-cc/files
@@ -63,13 +62,7 @@ echo "BINWALK=binwalk" >> shared-ng.inc
 #unzip -o -d /home/ubuntu/openwrt-cc/files upgrade-2.4.2.zip
 
 #退出root，以普通用户身份（#变$）执行下面的下载源码命令
-useradd -m linshiname
-passwd linshiname
-usermod -a -G sudo linshiname
-chsh -s /bin/bash linshiname
-
-#手动切换成普通用户linshiname，如果写入脚本运行立即终止
-su linshiname
+#命令连接autossh(-p 22删除)
 sudo nano 2
 sudo chmod +x 2
 sudo ./2
