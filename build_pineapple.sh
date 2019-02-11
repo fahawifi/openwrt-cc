@@ -91,6 +91,7 @@ sudo rm -rf openwrt-cc/files/sbin/modprobe
 
 cd openwrt-cc
 sudo chmod +x ./scripts/feeds
+#feeds update在本地电脑非常慢，在vps快
 sudo ./scripts/feeds update -a
 sudo ./scripts/feeds install -a
 sudo make menuconfig
