@@ -82,7 +82,7 @@ sudo ./2
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
 
 cd
-cd root
+cd /home/ubuntu
 sudo chmod +x openwrt-cc
 sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
 sudo rm -rf openwrt-cc/files/lib/modules/*
