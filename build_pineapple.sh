@@ -81,7 +81,7 @@ sudo ./2
 #sudo ./2
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
 
-cd
+#退出root身份，命令autossh(-p 22删除)登录后，在$状态下完成以下命令
 cd /home/ubuntu
 sudo chmod +x openwrt-cc
 sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
