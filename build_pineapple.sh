@@ -49,8 +49,11 @@ apt-get -y install flex
 apt-get -y install gperf
 apt-get -y install libc6-dev-i386
 
-
-
+cd
+sudo usermod -a -G sudo wei
+sudo chsh -s /bin/bash wei
+su wei
+cd /home/wei
 
 #退出root身份，命令autossh(-p 22删除)登录后，在$状态下完成以下命令
 #命令连接autossh(-p 22删除)
