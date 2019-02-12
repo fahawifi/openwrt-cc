@@ -60,19 +60,9 @@ su wei
 #To run a command as administrator (user "root"), use "sudo <command>".
 #See "man sudo_root" for details.
 #wei@VM-98-43-ubuntu:/home/ubuntu$ 
-#在wei用户下一定要进入wei目录才能clone的快
-cd /home/wei
 
 
-
-
-
-
-
-
-
-#退出root身份，命令autossh(-p 22删除)登录后，在$状态下完成以下命令
-#命令连接autossh(-p 22删除)
+#可以是root身份，只要最后的make是普通用户即可
 sudo nano 2
 sudo chmod +x 2
 sudo ./2
@@ -83,18 +73,26 @@ sudo ./2
 
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
 
-#浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
+#这部分可以在本地电脑完成后在上传到vps，zip解固到files+feeds文件夹clone，迅速
 sudo git clone https://github.com/fahawifi/openwrt-cc.git
 sudo mkdir openwrt-cc/files
+cd openwrt-cc
+#切换成root才有权限解固
+sudo tar -zxvf fmk_099.tar.gz
+cd fmk
+sudo echo "BINWALK=binwalk" >> shared-ng.inc
+sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
+#把.bin改为.zip后缀，解压得到的文件放到openwrt-cc/files，和/fmk/fmk/rootfs里面的内容是一样的，
+#unzip -o -d /openwrt-cc/files upgrade-2.4.2.zip
 
+cd
+sudo chmod +x openwrt-cc
+sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
+sudo rm -rf openwrt-cc/files/lib/modules/*
+sudo rm -rf openwrt-cc/files/sbin/modprobe
 
 cd openwrt-cc
 sudo chmod +x ./scripts/feeds
-#feeds update在本地电脑非常慢，在vps快
-sudo ./scripts/feeds update -a
-#sudo ./scripts/feeds install -a
-#sudo make menuconfig
-#sudo make
 
 
 su wei
@@ -106,24 +104,9 @@ sudo ./3
 
 ================================
 #!/bin/bash
-
-cd openwrt-cc
-#切换成root才有权限解固
-sudo tar -zxvf fmk_099.tar.gz
-cd fmk
-sudo echo "BINWALK=binwalk" >> shared-ng.inc
-sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
-#把.bin改为.zip后缀，解压得到的文件和/fmk/fmk/rootfs里面的内容是一样的，放到openwrt-cc/files
-#unzip -o -d /openwrt-cc/files upgrade-2.4.2.zip
-
 cd
-sudo chmod +x openwrt-cc
-sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
-sudo rm -rf openwrt-cc/files/lib/modules/*
-sudo rm -rf openwrt-cc/files/sbin/modprobe
-
 cd openwrt-cc
+sudo ./scripts/feeds update -a
 sudo ./scripts/feeds install -a
 sudo make menuconfig
 sudo make
-
