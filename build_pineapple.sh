@@ -44,7 +44,12 @@ apt-get -y install flex
 apt-get -y install gperf
 apt-get -y install libc6-dev-i386
 apt-get -y upgrade
-#在livecd里操作，kali系统，不同系统路径会不同，主要是切换用户后路径变更
+#从本地上传openwrt-cc目录到vps
+#scp -r /root/openwrt-cc ubuntu@111.231.253.160:/home/ubuntu
+#从vps下载整个目录到 本地电脑root
+#scp -r ubuntu@111.231.253.160:/home/ubuntu/openwrt-cc/files /root
+#scp -r ubuntu@111.231.253.160:/home/ubuntu/openwrt-cc/feeds /root
+
 #nano 1
 #chmod +x 1
 #./1
