@@ -78,26 +78,32 @@ chmod +x 2
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
 
 #浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
-sudo git clone https://github.com/fahawifi/openwrt-cc.git
-sudo mkdir openwrt-cc/files
-cd openwrt-cc
-#切换成root才有权限解固
-sudo tar -zxvf fmk_099.tar.gz
-cd fmk
-sudo echo "BINWALK=binwalk" >> shared-ng.inc
-sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
-#把.bin改为.zip后缀，解压得到的文件和/fmk/fmk/rootfs里面的内容是一样的，放到openwrt-cc/files
-#unzip -o -d /openwrt-cc/files upgrade-2.4.2.zip
+git clone https://github.com/fahawifi/openwrt-cc.git
+mkdir openwrt-cc/files
 cd
 sudo chmod +x openwrt-cc
-sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
-sudo rm -rf openwrt-cc/files/lib/modules/*
-sudo rm -rf openwrt-cc/files/sbin/modprobe
 
 cd openwrt-cc
 sudo chmod +x ./scripts/feeds
 #feeds update在本地电脑非常慢，在vps快
 sudo ./scripts/feeds update -a
+#sudo ./scripts/feeds install -a
+#sudo make menuconfig
+#sudo make
+
+cd openwrt-cc
+#切换成root才有权限解固
+tar -zxvf fmk_099.tar.gz
+cd fmk
+sudo echo "BINWALK=binwalk" >> shared-ng.inc
+sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
+#把.bin改为.zip后缀，解压得到的文件和/fmk/fmk/rootfs里面的内容是一样的，放到openwrt-cc/files
+#unzip -o -d /openwrt-cc/files upgrade-2.4.2.zip
+
+sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
+sudo rm -rf openwrt-cc/files/lib/modules/*
+sudo rm -rf openwrt-cc/files/sbin/modprobe
+
 sudo ./scripts/feeds install -a
 sudo make menuconfig
 sudo make
