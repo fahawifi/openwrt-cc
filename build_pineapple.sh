@@ -58,6 +58,11 @@ sudo passwd  wei
 sudo usermod -a -G sudo wei 
 sudo chsh -s /bin/bash wei
 su wei
+#Password: 
+#To run a command as administrator (user "root"), use "sudo <command>".
+#See "man sudo_root" for details.
+#wei@VM-98-43-ubuntu:/home/ubuntu$ 
+cd
 cd /home/wei
 
 #退出root身份，命令autossh(-p 22删除)登录后，在$状态下完成以下命令
