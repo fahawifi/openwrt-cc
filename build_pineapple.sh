@@ -1,4 +1,14 @@
 #!/bin/bash
+#从本地压缩openwrt-cc目录并上传到vps
+#tar -zcvf openwrt-cc.tar.gz /root/openwrt-cc
+#scp /root/openwrt-cc.tar.gz ubuntu@111.231.253.82:/home/ubuntu
+#sudo su
+#tar -zxvf openwrt-cc.tar.gz
+
+#从vps下载整个目录到 本地电脑root
+#scp -r ubuntu@111.231.253.160:/home/ubuntu/openwrt-cc/files /root
+#scp -r ubuntu@111.231.253.160:/home/ubuntu/openwrt-cc/feeds /root
+
 apt-get update
 apt -y install binwalk
 apt-get -y install git-core
@@ -44,11 +54,7 @@ apt-get -y install flex
 apt-get -y install gperf
 apt-get -y install libc6-dev-i386
 apt-get -y upgrade
-#从本地上传openwrt-cc目录到vps
-#scp -r /root/openwrt-cc ubuntu@111.231.253.160:/home/ubuntu
-#从vps下载整个目录到 本地电脑root
-#scp -r ubuntu@111.231.253.160:/home/ubuntu/openwrt-cc/files /root
-#scp -r ubuntu@111.231.253.160:/home/ubuntu/openwrt-cc/feeds /root
+
 
 #nano 1
 #chmod +x 1
@@ -107,6 +113,7 @@ sudo ./3
 
 ================================
 #!/bin/bash
+sudo tar -zxvf openwrt-cc.tar.gz
 cd
 cd openwrt-cc
 sudo chmod +x ./scripts/feeds
