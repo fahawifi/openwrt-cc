@@ -97,15 +97,16 @@ sudo ./scripts/feeds update -a
 #sudo make
 
 
+su wei
+cd
+cd /home/wei
 sudo nano 3
 sudo chmod +x 3
 sudo ./3
 
 ================================
 #!/bin/bash
-su wei
-cd
-cd /home/wei
+
 cd openwrt-cc
 #切换成root才有权限解固
 sudo tar -zxvf fmk_099.tar.gz
