@@ -7,7 +7,6 @@
 #但是git等方式下载OpenWrt固件源码（直接可以刷到该路由，但没有大菠萝功能）和后期./scripts/feeds update -a开始安装都必须切换到普通用户，否则出错
 sudo su
 apt-get update
-apt-get -y upgrade
 apt -y install binwalk
 apt-get -y install git-core
 apt-get -y install build-essential
@@ -51,6 +50,7 @@ apt-get -y install gcc-multilib
 apt-get -y install flex
 apt-get -y install gperf
 apt-get -y install libc6-dev-i386
+apt-get -y upgrade
 
 cd
 sudo useradd -m wei
