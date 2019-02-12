@@ -50,8 +50,8 @@ apt-get -y install gperf
 apt-get -y install libc6-dev-i386
 
 cd
-sudo usermod -a -G sudo wei
-sudo chsh -s /bin/bash wei
+usermod -a -G sudo wei
+chsh -s /bin/bash wei
 su wei
 cd /home/wei
 
