@@ -87,8 +87,8 @@ sudo tar -zxvf fmk_099.tar.gz
 cd fmk
 sudo echo "BINWALK=binwalk" >> shared-ng.inc
 sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
-#把.bin改为.zip后缀，解压得到的文件放到openwrt-cc/files，和/fmk/fmk/rootfs里面的内容是一样的，
-#unzip -o -d /openwrt-cc/files upgrade-2.4.2.zip
+#把.bin改为.zip后缀，解压得到的文件放到openwrt-cc/files，和/fmk/fmk/rootfs里面的内容看似是一样的，其实不同
+#在kali中失败，必须Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-130-generic x86_64)
 
 cd
 sudo chmod +x openwrt-cc
