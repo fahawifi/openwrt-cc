@@ -51,7 +51,6 @@ apt-get -y upgrade
 #./1
 #安装依赖和解固（fmk/fmk/rootfs/*）必须以root身份
 #但是git等方式下载OpenWrt固件源码（直接可以刷到该路由，但没有大菠萝功能）和后期./scripts/feeds update -a开始安装都必须切换到普通用户，否则出错
-
 cd
 sudo useradd -m wei
 sudo passwd  wei 
@@ -62,8 +61,16 @@ su wei
 #To run a command as administrator (user "root"), use "sudo <command>".
 #See "man sudo_root" for details.
 #wei@VM-98-43-ubuntu:/home/ubuntu$ 
-cd
+#在wei用户下一定要进入wei目录才能clone的快
 cd /home/wei
+
+
+
+
+
+
+
+
 
 #退出root身份，命令autossh(-p 22删除)登录后，在$状态下完成以下命令
 #命令连接autossh(-p 22删除)
@@ -78,8 +85,8 @@ sudo ./2
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
 
 #浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
-git clone https://github.com/fahawifi/openwrt-cc.git
-mkdir openwrt-cc/files
+sudo git clone https://github.com/fahawifi/openwrt-cc.git
+sudo mkdir openwrt-cc/files
 
 
 cd openwrt-cc
@@ -92,7 +99,7 @@ sudo ./scripts/feeds update -a
 
 cd openwrt-cc
 #切换成root才有权限解固
-tar -zxvf fmk_099.tar.gz
+sudo tar -zxvf fmk_099.tar.gz
 cd fmk
 sudo echo "BINWALK=binwalk" >> shared-ng.inc
 sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
