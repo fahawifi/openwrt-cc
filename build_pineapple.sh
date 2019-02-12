@@ -1,5 +1,4 @@
 #!/bin/bash
-
 apt-get update
 apt -y install binwalk
 apt-get -y install git-core
@@ -97,6 +96,16 @@ sudo ./scripts/feeds update -a
 #sudo make menuconfig
 #sudo make
 
+
+sudo nano 3
+sudo chmod +x 3
+sudo ./3
+
+================================
+#!/bin/bash
+su wei
+cd
+cd /home/wei
 cd openwrt-cc
 #切换成root才有权限解固
 sudo tar -zxvf fmk_099.tar.gz
