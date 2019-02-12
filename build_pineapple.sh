@@ -1,5 +1,8 @@
 #!/bin/bash
 #在livecd里操作，kali系统，不同系统路径会不同，主要是切换用户后路径变更
+#nano 1
+#chmod +x 1
+#./1
 #安装依赖和解固（fmk/fmk/rootfs/*）必须以root身份
 #但是git等方式下载OpenWrt固件源码（直接可以刷到该路由，但没有大菠萝功能）和后期./scripts/feeds update -a开始安装都必须切换到普通用户，否则出错
 sudo su
