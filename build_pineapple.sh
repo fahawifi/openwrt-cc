@@ -80,8 +80,7 @@ chmod +x 2
 #浏览器下载git速度更快，解压并重命名放在Home主文件夹，也就是root
 git clone https://github.com/fahawifi/openwrt-cc.git
 mkdir openwrt-cc/files
-cd
-sudo chmod +x openwrt-cc
+
 
 cd openwrt-cc
 sudo chmod +x ./scripts/feeds
@@ -100,10 +99,13 @@ sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
 #把.bin改为.zip后缀，解压得到的文件和/fmk/fmk/rootfs里面的内容是一样的，放到openwrt-cc/files
 #unzip -o -d /openwrt-cc/files upgrade-2.4.2.zip
 
+cd
+sudo chmod +x openwrt-cc
 sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
 sudo rm -rf openwrt-cc/files/lib/modules/*
 sudo rm -rf openwrt-cc/files/sbin/modprobe
 
+cd openwrt-cc
 sudo ./scripts/feeds install -a
 sudo make menuconfig
 sudo make
