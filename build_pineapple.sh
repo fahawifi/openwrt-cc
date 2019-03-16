@@ -48,6 +48,8 @@ apt-get -y install ncurses-term
 apt-get -y install asciidoc
 apt-get -y install libz-dev
 apt-get -y install make
+apt-get -y install libssl-dev
+apt-get -y install ncurses-dev
 apt-get -y install bison
 apt-get -y install gcc-multilib
 apt-get -y install flex
