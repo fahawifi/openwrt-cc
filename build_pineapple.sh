@@ -83,19 +83,22 @@ apt-get -y install libc6-dev-i386
 
 
 
+cd /home/ubuntu
 cd openwrt-cc
-sudo ./scripts/feeds install -a
 cd fmk
 sudo echo "BINWALK=binwalk" >> shared-ng.inc
 sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
 #把.bin改为.zip后缀，解压得到的文件放到openwrt-cc/files，和/fmk/fmk/rootfs里面的内容看似是一样的，其实不同
 #在kali中失败，必须Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-130-generic x86_64)
-
 cd
+cd /home/ubuntu/
 sudo chmod +x openwrt-cc
 sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
 sudo rm -rf openwrt-cc/files/lib/modules/*
 sudo rm -rf openwrt-cc/files/sbin/modprobe
+
+cd /home/ubuntu
 cd openwrt-cc
+sudo ./scripts/feeds install -a
 sudo make menuconfig
 sudo make
