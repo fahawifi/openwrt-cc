@@ -80,7 +80,7 @@ apt-get -y install flex
 apt-get -y install gperf
 apt-get -y install libelf-dev
 apt-get -y install libc6-dev-i386
-
+apt-get -f install -y 
 
 
 cd /home/ubuntu
