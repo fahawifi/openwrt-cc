@@ -86,7 +86,7 @@ sudo ./2
 
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
 
-#这部分是依赖可以在本地电脑完成后在上传到vps，zip解固到files+feeds文件夹clone，迅速
+#这部分依赖需在本地电脑用酸酸乳挂代理完成更新后压缩在上传到vps，，迅速
 sudo git clone https://github.com/fahawifi/openwrt-cc.git
 sudo mkdir openwrt-cc/files
 cd openwrt-cc
@@ -103,7 +103,7 @@ sudo ./scripts/feeds install -a
 #!/bin/bash
 sudo tar -zxvf openwrt-cc.tar.gz
 #一个固件下列命令只需要一次就可以把openwrt-cc/files保存下来，下次固件更新只需要删除files重新操作一遍即可
-cd
+sudo git clone https://github.com/fahawifi/openwrt-cc.git
 cd openwrt-cc
 cd fmk
 sudo echo "BINWALK=binwalk" >> shared-ng.inc
