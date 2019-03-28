@@ -23,6 +23,7 @@ tar -zcvf openwrt-cc.tar.gz /root/openwrt-cc
 cd
 #上传连接到vps前，先删除root/.ssh/
 rm -rf /root/.ssh/known_hosts
+#上传本地电脑文件到vps,@后跟的ip要换，/home/ubuntu是vps的路径
 #scp /root/openwrt-cc.tar.gz ubuntu@111.231.253.82:/home/ubuntu
 ================================
 
@@ -84,7 +85,7 @@ apt-get -y upgrade
 echo '192.30.253.112 github.com' >> /etc/hosts
 echo '151.101.185.194 github.global.ssl.fastly.net' >> /etc/hosts
 
-
+cd /home/ubuntu
 sudo tar -zxvf openwrt-cc.tar.gz
 #一个固件下列命令只需要一次就可以把openwrt-cc/files保存下来，下次固件更新只需要删除files重新操作一遍即可
 sudo git clone https://github.com/fahawifi/openwrt-cc.git
@@ -101,6 +102,6 @@ sudo chmod +x openwrt-cc
 sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
 sudo rm -rf openwrt-cc/files/lib/modules/*
 sudo rm -rf openwrt-cc/files/sbin/modprobe
-
+cd openwrt-cc
 sudo make menuconfig
 sudo make
