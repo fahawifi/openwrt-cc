@@ -28,10 +28,6 @@ rm -rf /root/.ssh/known_hosts
 ================================
 
 #!/bin/bash
-
-#sudo su
-#tar -zxvf openwrt-cc.tar.gz
-
 #从vps下载整个目录到 本地电脑root
 #scp -r ubuntu@111.231.253.160:/home/ubuntu/openwrt-cc/files /root
 #scp -r ubuntu@111.231.253.160:/home/ubuntu/openwrt-cc/feeds /root
@@ -81,6 +77,7 @@ apt-get -y install gperf
 apt-get -y install libelf-dev
 apt-get -y install libc6-dev-i386
 
+sudo su
 cd /home/ubuntu
 sudo tar -zxvf openwrt-cc.tar.gz
 #一个固件下列命令只需要一次就可以把openwrt-cc/files保存下来，下次固件更新只需要删除files重新操作一遍即可
