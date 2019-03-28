@@ -90,8 +90,9 @@ sudo ./2
 sudo git clone https://github.com/fahawifi/openwrt-cc.git
 sudo mkdir openwrt-cc/files
 cd openwrt-cc
-#切换成root才有权限解固
 sudo tar -zxvf fmk_099.tar.gz
+#切换成root才有权限解固
+#一个固件下列命令只需要一次就可以把openwrt-cc/files保存下来，下次固件更新只需要删除files重新操作一遍即可
 cd fmk
 sudo echo "BINWALK=binwalk" >> shared-ng.inc
 sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
