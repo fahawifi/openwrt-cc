@@ -89,6 +89,7 @@ sudo tar -zxvf openwrt-cc.tar.gz
 #一个固件下列命令只需要一次就可以把openwrt-cc/files保存下来，下次固件更新只需要删除files重新操作一遍即可
 sudo git clone https://github.com/fahawifi/openwrt-cc.git
 cd openwrt-cc
+sudo ./scripts/feeds install -a
 cd fmk
 sudo echo "BINWALK=binwalk" >> shared-ng.inc
 sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
