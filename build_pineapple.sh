@@ -1,7 +1,33 @@
 #!/bin/bash
+#nano 1
+#chmod +x 1
+#./1
+#安装依赖和解固（fmk/fmk/rootfs/*）必须以root身份
+#但是git等方式下载OpenWrt固件源码（直接可以刷到该路由，但没有大菠萝功能）和后期./scripts/feeds update -a开始安装都必须切换到普通用户，否则出错
+
+#下载该路由型号官网的openwrt源码，尽量原生和简洁
+#这部分依赖需在本地电脑用酸酸乳挂代理完成更新后压缩在上传到vps，
+#从本地压缩openwrt-cc目录并上传到vps，迅速
+sudo git clone https://github.com/fahawifi/openwrt-cc.git
+sudo mkdir openwrt-cc/files
+cd openwrt-cc
+#解压得到openwrt-cc/fmk文件夹，这是解压.bin格式路由固件的软件
+sudo tar -zxvf fmk_099.tar.gz
+sudo chmod +x ./scripts/feeds
+sudo ./scripts/feeds update -a
+sudo ./scripts/feeds install -a
+#切换成root才有权限解固
+
 #从本地压缩openwrt-cc目录并上传到vps
-#tar -zcvf openwrt-cc.tar.gz /root/openwrt-cc
+tar -zcvf openwrt-cc.tar.gz /root/openwrt-cc
+cd
+#上传连接到vps前，先删除root/.ssh/
+rm -rf /root/.ssh/known_hosts
 #scp /root/openwrt-cc.tar.gz ubuntu@111.231.253.82:/home/ubuntu
+================================
+
+#!/bin/bash
+
 #sudo su
 #tar -zxvf openwrt-cc.tar.gz
 
@@ -58,49 +84,7 @@ apt-get -y upgrade
 echo '192.30.253.112 github.com' >> /etc/hosts
 echo '151.101.185.194 github.global.ssl.fastly.net' >> /etc/hosts
 
-#nano 1
-#chmod +x 1
-#./1
-#安装依赖和解固（fmk/fmk/rootfs/*）必须以root身份
-#但是git等方式下载OpenWrt固件源码（直接可以刷到该路由，但没有大菠萝功能）和后期./scripts/feeds update -a开始安装都必须切换到普通用户，否则出错
-cd
-sudo useradd -m wei
-sudo passwd  wei 
-sudo usermod -a -G sudo wei 
-sudo chsh -s /bin/bash wei
-su wei
-#Password: 
-#To run a command as administrator (user "root"), use "sudo <command>".
-#See "man sudo_root" for details.
-#wei@VM-98-43-ubuntu:/home/ubuntu$ 
 
-
-#可以是root身份，只要最后的make是普通用户即可
-sudo nano 2
-sudo chmod +x 2
-sudo ./2
-
-#以上中断，复制以下代码后保存为2，再执行该脚本
-=============================================
-#!/bin/bash
-
-#下载该路由型号官网的openwrt源码，尽量原生和简洁
-
-#这部分依赖需在本地电脑用酸酸乳挂代理完成更新后压缩在上传到vps，，迅速
-sudo git clone https://github.com/fahawifi/openwrt-cc.git
-sudo mkdir openwrt-cc/files
-cd openwrt-cc
-sudo tar -zxvf fmk_099.tar.gz
-cd openwrt-cc
-sudo chmod +x ./scripts/feeds
-sudo ./scripts/feeds update -a
-sudo ./scripts/feeds install -a
-#切换成root才有权限解固
-
-
-
-================================
-#!/bin/bash
 sudo tar -zxvf openwrt-cc.tar.gz
 #一个固件下列命令只需要一次就可以把openwrt-cc/files保存下来，下次固件更新只需要删除files重新操作一遍即可
 sudo git clone https://github.com/fahawifi/openwrt-cc.git
