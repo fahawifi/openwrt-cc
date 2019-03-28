@@ -17,10 +17,7 @@ apt-get -y install zlib1g-dev
 apt-get -y install liblzma-dev
 apt-get -y install python-magic
 apt-get -y install subversion
-apt-get -y install build-essential
-apt-get -y install git-core
 apt-get -y install libncurses5-dev
-apt-get -y install zlib1g-dev
 apt-get -y install gawk
 apt-get -y install flex
 apt-get -y install quilt
