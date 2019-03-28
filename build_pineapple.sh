@@ -80,10 +80,6 @@ apt-get -y install flex
 apt-get -y install gperf
 apt-get -y install libelf-dev
 apt-get -y install libc6-dev-i386
-apt-get -y upgrade
-#直接设置dns，解析网站地址解决国外非被墙的网站网速慢，需重启网络
-echo '192.30.253.112 github.com' >> /etc/hosts
-echo '151.101.185.194 github.global.ssl.fastly.net' >> /etc/hosts
 
 cd /home/ubuntu
 sudo tar -zxvf openwrt-cc.tar.gz
