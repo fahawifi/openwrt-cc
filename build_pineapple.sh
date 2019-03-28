@@ -86,13 +86,25 @@ sudo ./2
 
 #下载该路由型号官网的openwrt源码，尽量原生和简洁
 
-#这部分可以在本地电脑完成后在上传到vps，zip解固到files+feeds文件夹clone，迅速
+#这部分是依赖可以在本地电脑完成后在上传到vps，zip解固到files+feeds文件夹clone，迅速
 sudo git clone https://github.com/fahawifi/openwrt-cc.git
 sudo mkdir openwrt-cc/files
 cd openwrt-cc
 sudo tar -zxvf fmk_099.tar.gz
+cd openwrt-cc
+sudo chmod +x ./scripts/feeds
+sudo ./scripts/feeds update -a
+sudo ./scripts/feeds install -a
 #切换成root才有权限解固
+
+
+
+================================
+#!/bin/bash
+sudo tar -zxvf openwrt-cc.tar.gz
 #一个固件下列命令只需要一次就可以把openwrt-cc/files保存下来，下次固件更新只需要删除files重新操作一遍即可
+cd
+cd openwrt-cc
 cd fmk
 sudo echo "BINWALK=binwalk" >> shared-ng.inc
 sudo ./extract-firmware.sh ../upgrade-2.4.2.bin
@@ -105,22 +117,5 @@ sudo cp -r openwrt-cc/fmk/fmk/rootfs/* openwrt-cc/files/
 sudo rm -rf openwrt-cc/files/lib/modules/*
 sudo rm -rf openwrt-cc/files/sbin/modprobe
 
-
-
-su wei
-cd
-cd /home/wei
-sudo nano 3
-sudo chmod +x 3
-sudo ./3
-
-================================
-#!/bin/bash
-sudo tar -zxvf openwrt-cc.tar.gz
-cd
-cd openwrt-cc
-sudo chmod +x ./scripts/feeds
-sudo ./scripts/feeds update -a
-sudo ./scripts/feeds install -a
 sudo make menuconfig
 sudo make
