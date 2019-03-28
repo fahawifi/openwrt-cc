@@ -25,13 +25,14 @@ cd
 rm -rf /root/.ssh/known_hosts
 #上传本地电脑文件到vps,@后跟的ip要换，/home/ubuntu是vps的路径
 #scp openwrt-cc.tar.gz ubuntu@111.231.253.82:/home/ubuntu
-================================
 
+
+================================
 #!/bin/bash
 #从vps下载整个目录到 本地电脑root
 #scp -r ubuntu@111.231.253.160:/home/ubuntu/openwrt-cc/files /root
 #scp -r ubuntu@111.231.253.160:/home/ubuntu/openwrt-cc/feeds /root
-sudo su
+
 cd /home/ubuntu
 sudo tar -zxvf openwrt-cc.tar.gz
 #一个固件下列命令只需要一次就可以把openwrt-cc/files保存下来，下次固件更新只需要删除files重新操作一遍即可
